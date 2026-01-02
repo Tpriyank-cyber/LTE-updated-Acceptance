@@ -88,14 +88,13 @@ def build_acceptance(bbh_file, daily_file, lnbts_list):
             if kpi not in row:
                 missing_kpis.add(kpi)
                 continue
-            if kpi == "Total LTE Traffic (24 Hr)":
+           if kpi == "Total LTE Traffic (24 Hr)":
                 if "Daily LTE Payload" in row:
-                    value = row["Daily LTE Payload"]
+                    value = row["Daily LTE Payload"]   # always from daily file
                 elif "Total LTE data volume, DL + UL" in row:
-                    value = row["Total LTE data volume, DL + UL"]
+                    value = row["Total LTE data volume, DL + UL"]  # fallback
                 else:
-                    # skip if neither column exists
-                    continue
+                    continue  # skip if neither column exists
             elif kpi == "VoLTE total traffic":
                 if "VoLTE total traffic" in row:
                     value = row["VoLTE total traffic"]
@@ -106,6 +105,7 @@ def build_acceptance(bbh_file, daily_file, lnbts_list):
                     value = row[kpi]
                 else:
                     continue
+
 
             rows.append({
                 "LNBTS name": row["LNBTS name"],
@@ -191,12 +191,24 @@ def build_bbh_tracker(bbh_file, daily_file, lnbts_list, existing_tracker=None):
             if kpi not in row:
                 missing_kpis.add(kpi)
                 continue
-            if kpi == "Total LTE Traffic (24 Hr)" and "Daily LTE Payload" in row:
-                value = row["Daily LTE Payload"]
-            elif kpi == "VoLTE total traffic" and "VoLTE total traffic" in row:
-                value = row["VoLTE total traffic"]
+            if kpi == "Total LTE Traffic (24 Hr)":
+                if "Daily LTE Payload" in row:
+                    value = row["Daily LTE Payload"]   # always from daily file
+                elif "Total LTE data volume, DL + UL" in row:
+                    value = row["Total LTE data volume, DL + UL"]  # fallback
+                else:
+                    continue  # skip if neither column exists
+            elif kpi == "VoLTE total traffic":
+                if "VoLTE total traffic" in row:
+                    value = row["VoLTE total traffic"]
+                else:
+                    continue
             else:
-                value = row[kpi]
+                if kpi in row:
+                    value = row[kpi]
+                else:
+                    continue
+
 
             rows.append({
                 "LNBTS name": row["LNBTS name"],
@@ -284,4 +296,5 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
 
