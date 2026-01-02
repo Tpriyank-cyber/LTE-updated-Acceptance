@@ -60,7 +60,7 @@ def build_acceptance_with_remarks(bbh_file, daily_file, lnbts_list):
         "E-RAB DR RAN", "E-UTRAN Avg PRB usage per TTI DL", "E-UTRAN E-RAB stp SR",
         "Init Contx stp SR for CSFB", "Intra eNB HO SR", "Avg IP thp DL QCI9",
         "Total E-UTRAN RRC conn stp SR", "Total LTE Traffic (24 Hr)", "VoLTE total traffic",
-        "E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR"
+        "E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR", "inter eNB E-UTRAN HO SR X2"
     ]
 
     rows = []
@@ -166,7 +166,8 @@ def build_bbh_tracker(bbh_file, daily_file, lnbts_list, existing_tracker=None):
         "Avg DL nonGBR IP thp UEs w/out CA", "Avg DL nonGBR IP thp CA active UEs 2 CCS",
         "E-UTRAN RLC PDU Volume DL via Scell", "RLC PDU vol DL via Pcell",
         "Avg DL User throughput", "Avg UL User throughput",
-        "Total LTE Traffic (24 Hr)", "VoLTE total traffic","E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR"
+        "Total LTE Traffic (24 Hr)", "VoLTE total traffic","E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR",
+        "inter eNB E-UTRAN HO SR X2"
     ]
 
     rows = []
@@ -257,6 +258,7 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
 
 
 
