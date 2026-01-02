@@ -62,11 +62,6 @@ def build_acceptance_with_remarks(bbh_file, daily_file, lnbts_list):
         "Total E-UTRAN RRC conn stp SR", "Total LTE Traffic (24 Hr)", "VoLTE total traffic",
         "E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR", "inter eNB E-UTRAN HO SR X2"
     ]
-    missing_kpis = [kpi for kpi in kpi_list if kpi not in df.columns]
-    if missing_kpis:
-        print("⚠ These KPIs were NOT found in the data:", missing_kpis)  # For Spyder / console
-        import streamlit as st
-        st.warning(f"These KPIs were NOT found in the uploaded files: {missing_kpis}")
         
     rows = []
     for _, row in df.iterrows():
@@ -263,6 +258,7 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
 
 
 
