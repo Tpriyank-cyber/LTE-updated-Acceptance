@@ -77,7 +77,7 @@ def build_acceptance(bbh_file, daily_file, lnbts_list):
         "Average CQI", "Avg RRC conn UE", "Avg UE distance", "Cell Avail excl BLU",
         "E-RAB DR RAN", "E-UTRAN Avg PRB usage per TTI DL", "E-UTRAN E-RAB stp SR",
         "Init Contx stp SR for CSFB", "Intra eNB HO SR", "Avg IP thp DL QCI9",
-        "Total E-UTRAN RRC conn stp SR", "Total LTE Traffic (24 Hr)", "VoLTE total traffic",
+        "Total E-UTRAN RRC conn stp SR", "Total LTE data volume, DL + UL", "VoLTE total traffic",
         "E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR"
     ]
 
@@ -296,3 +296,4 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
