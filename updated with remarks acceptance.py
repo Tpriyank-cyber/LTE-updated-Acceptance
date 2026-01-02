@@ -77,7 +77,7 @@ def build_acceptance(bbh_file, daily_file, lnbts_list):
         "Average CQI", "Avg RRC conn UE", "Avg UE distance", "Cell Avail excl BLU",
         "E-RAB DR RAN", "E-UTRAN Avg PRB usage per TTI DL", "E-UTRAN E-RAB stp SR",
         "Init Contx stp SR for CSFB", "Intra eNB HO SR", "Avg IP thp DL QCI9",
-        "Total E-UTRAN RRC conn stp SR", "Total LTE data volume, DL + UL", "VoLTE total traffic",
+        "Total E-UTRAN RRC conn stp SR", "Daily LTE Payload", "VoLTE total traffic",
         "E-UTRAN Intra-Freq HO SR", "E-UTRAN Inter-Freq HO SR"
     ]
 
@@ -174,7 +174,7 @@ def build_bbh_tracker(bbh_file, daily_file, lnbts_list, existing_tracker=None):
         "Cell Avail excl BLU", "E-UTRAN Avg PRB usage per TTI DL", "% MIMO RI 2", "% MIMO RI 1",
         "Init Contx stp SR for CSFB", "RACH Stp Completion SR", "SINR_PUSCH_AVG (M8005C95)",
         "SINR_PUCCH_AVG (M8005C92)", "Avg RSSI for PUSCH", "RSSI_PUCCH_AVG (M8005C2)",
-        "Avg PDCP cell thp DL", "Avg IP thp DL QCI9", "Total LTE data volume, DL + UL",
+        "Avg PDCP cell thp DL", "Avg IP thp DL QCI9", "Daily LTE Payload",
         "Avg UE distance", "Average CQI", "Avg RRC conn UE", "inter eNB E-UTRAN HO SR X2",
         "Intra eNB HO SR", "E-RAB DR RAN", "E-UTRAN E-RAB stp SR",
         "Total E-UTRAN RRC conn stp SR", "Avg IP thp DL QCI6", "Avg IP thp DL QCI8", "Avg IP thp DL QCI7",
@@ -296,4 +296,5 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
 
