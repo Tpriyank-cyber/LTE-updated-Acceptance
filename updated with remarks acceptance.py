@@ -152,7 +152,7 @@ def build_acceptance(bbh_file, daily_file, lnbts_list):
                 else:
                     remark = "Fail Threshold"
             else:
-                remark = "N/A"
+                remark = "Stable"
 
             remarks.append(remark)
 
@@ -280,3 +280,4 @@ with tab2:
             buffer2 = BytesIO()
             df_tracker.to_excel(buffer2, index=False, engine="xlsxwriter")
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
+
