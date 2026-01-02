@@ -98,7 +98,7 @@ def build_acceptance_with_remarks(bbh_file, daily_file, lnbts_list):
     # -------- Add Remarks --------
     thresholds = {
         "Total E-UTRAN RRC conn stp SR": ">99",
-        "Avg IP thp DL QCI9": ">5",
+        "Avg IP thp DL QCI9": ">5000",
         "Intra eNB HO SR": ">98",
         "inter eNB E-UTRAN HO SR X2": ">98",
         "Init Contx stp SR for CSFB": ">98",
@@ -256,3 +256,4 @@ with tab2:
             st.download_button("⬇ Download BBH Tracker", buffer2.getvalue(), "BBH_Tracker.xlsx")
         else:
             st.warning("Upload both BBH and Daily files.")
+
